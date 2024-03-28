@@ -18,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href={favicon.src} />
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <p className="absolute text-white bottom-5 left-5 text-lg">© Kai Sereni 2022</p>
+      </body>
     </html>
   );
 }
