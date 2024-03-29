@@ -1,8 +1,7 @@
 "use client"
 
-import { Children, useState } from "react";
+import { useState } from "react";
 import  clsx from "clsx";
-import { redirect } from "next/dist/server/api-utils";
 
 type Props = {
     children?: React.ReactNode;
