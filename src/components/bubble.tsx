@@ -19,19 +19,20 @@ export default function Bubble({
     const [hovering, setHovered] = useState(false);
 
     return (
-          <a onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)} href={link} className="flex text-white w-[15vw] h-[15vw] hover:scale-125 rounded-full shadow-2xl cursor-pointer duration-200 justify-center items-center" style={{
+          <a onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)} href={link} className={clsx("flex text-white rounded-full shadow-2xl cursor-pointer duration-500 justify-center items-center", [hovering ? "w-[25vw] h-[25vw]" : "w-[15vw] h-[15vw]"])} style={{
             background: 'radial-gradient(circle, rgb(25, 25, 255) 0%, rgb(15, 0, 120) 70%)',
             transformOrigin: 'center center',
+            pointerEvents: "all"
           }}>
             {
-                <div className="duration-200 flex justify-center items-center">
-                    <div className="duration-100" style={hovering ? {opacity: "100%"} : {opacity: "0%"}}>
+                <div className="duration-500 flex justify-center items-center">
+                    <div className="duration-500 text-center p-16 w-[26vw]" style={hovering ? {opacity: "100%", scale: "100%", fontSize: "calc(1.8vh - 1px)"} : {opacity: "0%", scale: "30%"}}>
                         {children}
                     </div>
-                    <div className="absolute duration-200" style={
-                        hovering ? {transform: "translateY(8.5vw)"} : {transform: "translateY(0)"}
+                    <div className="absolute duration-500" style={
+                        hovering ? {transform: "translateY(15vw)"} : {transform: "translateY(0)"}
                     }>
-                        <div className={clsx("text-xl", [hovering && "scale-75"])}>
+                        <div className={"text-lg duration-500"}>
                             {title}
                         </div>
                     </div>
