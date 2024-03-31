@@ -36,7 +36,7 @@ export default function Coding() {
                     <h2 className="absolute text-white" style={{fontSize: "40pt", transform: "translateY(" + (sh * -5 + 200) + "px)"}}>Kai's Code</h2>
                     <img src={d.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + (sh * (0.2 + mod)) + "px)"}}/>
                     <img src={e.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + (sh * (0.7 + mod) ) + "px)"}}/> 
-                    <img src={grid.src} className="opacity-60 scale-150" style={{mixBlendMode: "darken"}}/>
+                    <img src={grid.src} className="scale-150" style={{mixBlendMode: "darken"}}/>
                 </div>
             </div>
             <div className="block w-full h-[150vh]">
