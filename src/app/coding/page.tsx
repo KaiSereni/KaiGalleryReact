@@ -24,16 +24,18 @@ export default function Coding() {
         }
     })
 
+    const mod = 0.2
+
 
     return (
         <div className="block">
             <div className="block h-[700px]">
                 <div className="flex w-full h-full justify-center bg-gray-100">
-                    <img src={b.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + sh * 0.4 + "px)"}}/>
-                    <img src={c.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + sh * 0.1 + "px)"}}/>
+                    <img src={b.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + sh * (0.2 + mod) + "px)"}}/>
+                    <img src={c.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + sh * (0.3 + mod) + "px)"}}/>
                     <h2 className="absolute text-white" style={{fontSize: "40pt", transform: "translateY(" + (sh * -5 + 200) + "px)"}}>Kai's Code</h2>
-                    <img src={d.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + (sh * 0.2) + "px)"}}/>
-                    <img src={e.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + (sh * 0.7 ) + "px)"}}/> 
+                    <img src={d.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + (sh * (0.2 + mod)) + "px)"}}/>
+                    <img src={e.src} className={"absolute w-[" + IDETitleWidth + "px]"} style={{transform: "translateY(" + (sh * (0.7 + mod) ) + "px)"}}/> 
                     <img src={grid.src} className="opacity-60 scale-150" style={{mixBlendMode: "darken"}}/>
                 </div>
             </div>
