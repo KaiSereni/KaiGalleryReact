@@ -6,9 +6,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600&display=swap');
 
 body {
-	background-color: #232323; 
+	background-color: #2d2e35; 
 	overflow: hidden;
 	transition-duration: 200ms;
+	overflow-y: auto;
 }
 
 h1 {
