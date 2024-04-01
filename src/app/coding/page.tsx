@@ -2,20 +2,22 @@
 
 import React, { useEffect, useRef, useState } from "react"
 import grid from "../../../public/image/grid.png"
+import clsx from "clsx";
 
 export default function Coding() {
-
-    const [sh, updateScroll] = useState(0);
+    interface numJson {
+        [index : number] : boolean
+    }
+    
     const [shownImage, setShownImage] = useState(0);
-    const [loadStatuses, setLoadStatuses] = useState<{[key : number] : boolean}>({});
+    const [loadStatuses, setLoadStatuses] = useState<Number[]>([]);
 
     const totalImages = 69;
 
     useEffect(() => {
         const handleScroll = () => {
-            let scroll = window.scrollY;
-            updateScroll(scroll);
-            setShownImage(Math.floor(scroll/12))
+            let sh = window.scrollY;
+            setShownImage(Math.floor(sh/9))
         }
 
         window.addEventListener("scroll", handleScroll)
@@ -37,12 +39,16 @@ export default function Coding() {
             const thisPath = `ide${thisName}.png`
 
             r.push(
-                <img src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px]" onLoad={() => {
+                <img src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute max-h-[700px]" onLoad={() => {
+                    console.log(i + " loaded");
                     let current = loadStatuses;
-                    current[i] = true
+                    current.push(i);
                     setLoadStatuses(current);
-                    console.log(loadStatuses);
-                }}/>
+                }}
+                onError={() => {
+                    console.error("ERROR RENDERING IMAGE " + i + " IN ANIMATION");
+                }}
+                />
             )
         }
         return r;
@@ -57,13 +63,14 @@ export default function Coding() {
                     }
                 </div>
             </div>
-            <div className="block w-full h-[150vh]">
-                <div className="absolute bg-gray-800 w-full h-[150vh] text-white">
-
-                </div>
+            <div className="block w-full h-[150vh] bg-gray-800 text-white">
+                
             </div>
             <div className="bg-white w-full h-[150vh]">
 
+            </div>
+            <div className={clsx("absolute w-[100vw] h-[100vw] top-0 left-0 bg-blue-600 text-white text-center text-2xl", [loadStatuses.length >= totalImages ? "none" : "block"])}>
+                <p className="my-64">LOADING</p>
             </div>
         </div>
     )

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import  clsx from "clsx";
+import { redirect } from "next/navigation";
 
 type Props = {
     children?: React.ReactNode;
@@ -18,7 +19,7 @@ export default function Bubble({
     const [hovering, setHovered] = useState(false);
 
     return (
-          <a onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)} href={link} className={clsx("flex text-white rounded-full shadow-2xl cursor-pointer duration-500 justify-center items-center", [hovering ? "w-[25vw] h-[25vw]" : "w-[15vw] h-[15vw]"])} style={{
+          <div onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)} onClick={() => {window.location.href = link;}} className={clsx("flex text-white rounded-full shadow-2xl cursor-pointer duration-500 justify-center items-center", [hovering ? "w-[25vw] h-[25vw]" : "w-[15vw] h-[15vw]"])} style={{
             background: 'radial-gradient(circle, rgb(25, 25, 255) 0%, rgb(15, 0, 120) 70%)',
             transformOrigin: 'center center',
             pointerEvents: "all"
@@ -37,7 +38,7 @@ export default function Bubble({
                     </div>
                 </div>
             }
-          </a>
+          </div>
     );
 }
   

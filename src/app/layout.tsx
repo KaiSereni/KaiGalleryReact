@@ -20,7 +20,7 @@ export default function RootLayout({
       <link rel="icon" href={favicon.src} />
       <body className={prompt.className}>
         {children}
-        <p className="fixed text-white bottom-5 left-5 text-lg">© Kai Sereni 2022</p>
+        <p className="fixed text-white bottom-5 left-5 text-lg" style={{textShadow: "0px 0px 5px black"}}>© Kai Sereni 2022</p>
       </body>
     </html>
   );
