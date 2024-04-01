@@ -1,21 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react"
-import b from "../../../public/image/ide_elements/b.png"
-import c from "../../../public/image/ide_elements/c.png"
-import d from "../../../public/image/ide_elements/d.png"
-import e from "../../../public/image/ide_elements/e.png"
+import React, { useEffect, useRef, useState } from "react"
 import grid from "../../../public/image/grid.png"
 
 export default function Coding() {
 
     const [sh, updateScroll] = useState(0);
-    const IDETitleWidth = 800
+    const [shownImage, setShownImage] = useState(0);
+
+    const totalImages = 69;
 
     useEffect(() => {
         const handleScroll = () => {
             let scroll = window.scrollY;
             updateScroll(scroll);
+            setShownImage(Math.floor(scroll/12))
         }
 
         window.addEventListener("scroll", handleScroll)
@@ -23,20 +22,33 @@ export default function Coding() {
             window.removeEventListener("scroll", handleScroll)
         }
     })
+    
+    const IDENodeList = () => {
+        let r = []
+        for (let i = 0; i <= totalImages; i++) {
+            let thisName;
+            if (i.toString().length == 1) {
+                thisName = "0" + i;
+            }
+            else {
+                thisName = i.toString();
+            }
+            const thisPath = `ide${thisName}.png`
 
-    const mod = 0.2
-
+            r.push(
+                <img src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px]"/>
+            )
+        }
+        return r;
+    }
 
     return (
         <div className="block">
             <div className="block h-[700px]">
                 <div className="flex w-full h-full justify-center bg-gray-100">
-                    <img src={b.src} className={"absolute"} style={{transform: "translateY(" + sh * (0.2 + mod) + "px)", width: IDETitleWidth + "px"}}/>
-                    <img src={c.src} className={"absolute"} style={{transform: "translateY(" + sh * (0.3 + mod) + "px)", width: IDETitleWidth + "px"}}/>
-                    <h2 className="absolute text-white" style={{fontSize: "40pt", transform: "translateY(" + (sh * -5 + 200) + "px)"}}>Kai's Code</h2>
-                    <img src={d.src} className={"absolute"} style={{transform: "translateY(" + (sh * (0.2 + mod)) + "px)", width: IDETitleWidth + "px"}}/>
-                    <img src={e.src} className={"absolute"} style={{transform: "translateY(" + (sh * (0.7 + mod) ) + "px)", width: IDETitleWidth + "px"}}/> 
-                    <img src={grid.src} className="scale-150" style={{mixBlendMode: "darken"}}/>
+                    {
+                        IDENodeList()
+                    }
                 </div>
             </div>
             <div className="block w-full h-[150vh]">
