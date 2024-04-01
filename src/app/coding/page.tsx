@@ -7,6 +7,7 @@ export default function Coding() {
 
     const [sh, updateScroll] = useState(0);
     const [shownImage, setShownImage] = useState(0);
+    const [loadStatuses, setLoadStatuses] = useState<{[key : number] : boolean}>({});
 
     const totalImages = 69;
 
@@ -36,7 +37,12 @@ export default function Coding() {
             const thisPath = `ide${thisName}.png`
 
             r.push(
-                <img src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px]"/>
+                <img src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px]" onLoad={() => {
+                    let current = loadStatuses;
+                    current[i] = true
+                    setLoadStatuses(current);
+                    console.log(loadStatuses);
+                }}/>
             )
         }
         return r;
