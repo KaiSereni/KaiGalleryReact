@@ -26,7 +26,7 @@ export default function Bubble({
           }}>
             {
                 <div className="duration-500 flex justify-center items-center">
-                    <div className="duration-500 text-center p-16 w-[26vw]" style={hovering ? {opacity: "100%", scale: "100%", fontSize: "calc(1.8vh - 1px)"} : {opacity: "0%", scale: "30%"}}>
+                    <div className="duration-500 text-center p-16 rounded-2xl" style={hovering ? {opacity: "100%", fontSize: "calc(0.9vw - 1px)", width: "28vw"} : {opacity: "0%", fontSize: "1pt", width: "15vw"}}>
                         {children}
                     </div>
                     <div className="absolute duration-500" style={
