@@ -15,10 +15,7 @@ export default function Coding() {
         console.log("loaded")
         setIsLoading(false);
     }
-    try {
-        window.addEventListener("load", handleLoad);
-    }
-    catch(e){}
+    window.addEventListener("load", handleLoad);
 
     useEffect(() => {
         function handleScroll() {
@@ -45,7 +42,7 @@ export default function Coding() {
             const thisPath = `ide${thisName}.png`
 
             r.push(
-                <img src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px]"/>
+                <img key={i} src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px]"/>
             )
         }
         return r;
