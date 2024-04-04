@@ -37,7 +37,7 @@ export default function Coding() {
             const thisPath = `ide${thisName}.png`
 
             r.push(
-                <img key={i} src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px] w-[1244px]"/>
+                <img key={i} src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px] min-w-[1244px]"/>
             )
         }
         return r;
