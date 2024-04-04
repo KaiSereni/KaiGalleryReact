@@ -3,6 +3,8 @@
 import React, { useEffect, useRef, useState } from "react"
 import grid from "../../../public/image/grid.png"
 import clsx from "clsx";
+import Spinner from "@/components/spinner";
+import Loading from "@/components/loading_screen";
 
 export default function Coding() {
 
@@ -10,26 +12,17 @@ export default function Coding() {
     const [isLoading, setIsLoading] = useState(true);
 
     const totalImages = 69;
-
-    function handleLoad() {
-        console.log("loaded")
-        setIsLoading(false);
-    }
-    if (typeof window !== undefined) {
-        window.addEventListener("load", handleLoad);
+    function handleScroll() {
+        let sh = window.scrollY;
+        setShownImage(Math.floor(sh/9));
     }
 
     useEffect(() => {
-        function handleScroll() {
-            let sh = window.scrollY;
-            setShownImage(Math.floor(sh/9));
-        }
-
         window.addEventListener("scroll", handleScroll);
         return () => {
-            window.removeEventListener("scroll", handleScroll);
+            setIsLoading(false);
         };
-    }, [])
+    });
     
     const IDENodeList = () => {
         let r = []
@@ -44,7 +37,7 @@ export default function Coding() {
             const thisPath = `ide${thisName}.png`
 
             r.push(
-                <img key={i} src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px]"/>
+                <img key={i} src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px] w-[1244px]"/>
             )
         }
         return r;
@@ -64,10 +57,7 @@ export default function Coding() {
                 
             </div>
             <div className="bg-white w-full h-[150vh]">
-
-            </div>
-            <div className={clsx("absolute w-[100vw] h-[100vh] top-0 left-0 bg-blue-800 text-2xl justify-center items-center text-center p-8 text-white", [isLoading ? "block" : "hidden"])}>
-                Loading...
+                    <Loading isLoading={isLoading}/>
             </div>
         </div>
     )
