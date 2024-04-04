@@ -15,7 +15,9 @@ export default function Coding() {
         console.log("loaded")
         setIsLoading(false);
     }
-    window.addEventListener("load", handleLoad);
+    if (typeof window !== undefined) {
+        window.addEventListener("load", handleLoad);
+    }
 
     useEffect(() => {
         function handleScroll() {
