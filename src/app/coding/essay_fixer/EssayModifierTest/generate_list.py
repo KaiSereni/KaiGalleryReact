@@ -25,13 +25,13 @@ def get_corrections(string):
         this_predictions = predictions[i][1]
         this_word = predictions[i][0]
         #get statistics
-        this_predictions_keys = list(json.loads(this_predictions).keys())
+        this_predictions_keys = list(this_predictions.keys())
         word_one = this_predictions_keys[0]
         word_two = this_predictions_keys[1]
         word_three = this_predictions_keys[2]
         #print(this_predictions)
         if this_word in this_predictions:
-            this_word_quality = json.loads(this_predictions)[this_word]
+            this_word_quality = this_predictions[this_word]
             corrected_output.append([this_word, this_word_quality, word_one, word_two, word_three])
         else:
             corrected_output.append([this_word, 0, word_one, word_two, word_three])
@@ -39,5 +39,5 @@ def get_corrections(string):
     return corrected_output
 
 # Example usage:
-corrections = get_corrections("The sun is the hottest body in the world")
+corrections = get_corrections("The sun is the hottest object in the world")
 print(corrections)

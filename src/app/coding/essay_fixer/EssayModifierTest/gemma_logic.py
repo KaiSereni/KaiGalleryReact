@@ -28,11 +28,17 @@ def get_candidates(input_ids, num_candidates):
         confidence = logits[0, -1, token_id].item()
         top_candidates.append((token, confidence))
 
+    # Normalize confidence scores to [0, 1]
+    max_confidence = max(confidence for _, confidence in top_candidates)
+    min_confidence = min(confidence for _, confidence in top_candidates)
+    for i, (token, confidence) in enumerate(top_candidates):
+        normalized_confidence = (confidence - min_confidence) / (max_confidence - min_confidence) * 100
+        top_candidates[i] = (token, normalized_confidence)
+
     # Create JSON output
     output_dict = {token: confidence for token, confidence in top_candidates}
-    output_json = json.dumps(output_dict)
 
-    return output_json
+    return output_dict
 
 def tokenize(input_string):
     # Load Gemma 2B model
