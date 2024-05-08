@@ -2,35 +2,39 @@ from torch import tensor
 from gemma_logic import get_candidates, tokenize
 import json
 
-def get_predictions(token_ids, tokens_list):
-    token_confidence_list = {}
+def get_predictions(tokens_list):
+    token_confidence_list = []
 
     for i, token in enumerate(tokens_list):
         context = " ".join(tokens_list[:i])
-        print(context)  # Print context for debugging
-        candidate_predictions = get_candidates(token_ids, 100)  # Get predictions
-        if token in token_confidence_list:
-            # Append predictions to existing list
-            if isinstance(token_confidence_list[token], list):
-                token_confidence_list[token].extend(candidate_predictions)
-            else:
-                token_confidence_list[token] = candidate_predictions
-        else:
-            # Create a new entry
-            token_confidence_list[token] = candidate_predictions
+        context_ids, _ = tokenize(context)
+        candidate_predictions = get_candidates(context_ids, 100)  # Get predictions
+        # Create a new entry
+        token_confidence_list.append([token, candidate_predictions])
 
     return token_confidence_list
 
 def get_corrections(string):
-    corrected_output = {}
+    corrected_output = []
     input_ids, tokens_list = tokenize(string)
-    predictions = get_predictions(input_ids, tokens_list)
+    predictions = get_predictions(tokens_list)
 
-    for word, word_predictions in predictions.items():
-        if word in json.loads(word_predictions):
-            corrected_output[word] = [json.loads(word_predictions)[word]]
+    #print(predictions)
+
+    for i in range(len(predictions)):
+        this_predictions = predictions[i][1]
+        this_word = predictions[i][0]
+        #get statistics
+        this_predictions_keys = list(json.loads(this_predictions).keys())
+        word_one = this_predictions_keys[0]
+        word_two = this_predictions_keys[1]
+        word_three = this_predictions_keys[2]
+        #print(this_predictions)
+        if this_word in this_predictions:
+            this_word_quality = json.loads(this_predictions)[this_word]
+            corrected_output.append([this_word, this_word_quality, word_one, word_two, word_three])
         else:
-            corrected_output[word] = [0]
+            corrected_output.append([this_word, 0, word_one, word_two, word_three])
 
     return corrected_output
 

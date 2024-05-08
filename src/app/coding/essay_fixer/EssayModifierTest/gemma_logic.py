@@ -2,6 +2,11 @@ import json
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
+# Load Gemma 2B model
+model_id = "/kaggle/input/gemma/transformers/2b/2"
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(model_id, hidden_activation="gelu_pytorch_tanh")
+
 def clean_tokens(list):
     new_list = []
     for string in list:
@@ -11,11 +16,6 @@ def clean_tokens(list):
     return new_list
 
 def get_candidates(input_ids, num_candidates):
-
-    # Load Gemma 2B model
-    model_id = "/kaggle/input/gemma/transformers/2b/2"
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
-    model = AutoModelForCausalLM.from_pretrained(model_id, hidden_activation="gelu_pytorch_tanh")
 
     # Generate predictions
     with torch.no_grad():
