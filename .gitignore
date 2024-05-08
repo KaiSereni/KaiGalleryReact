@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/src/app/coding/essay_fixer/EssayModifierTest/venv
+**/.vscode
+**/__pycache__
