@@ -3,6 +3,7 @@
 import Spinner from "@/components/spinner";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
+import copy from "../../../../public/image/copyClipboard.svg"
 
 export default function Essay() {
     const [enteredText, setEnteredText] = useState<string>("");
@@ -35,6 +36,13 @@ export default function Essay() {
                     Get detailed annotation showing which parts of your essay ChatGPT likes and doesn't like. Click to get suggestions for alternate word choices. Large Language Models work by taking a string of text, usually the text they already sent, and deciding what the next word should be. This tool shows how much ChatGPT agrees with your word choices.<br/>
                 </div>
             </div>
+            <img 
+                src={copy.src}
+                className="mt-8 mb-2 w-4 h-4 bg-blue-100 rounded shadow cursor-pointer hover:scale-105 duration-200"
+                onClick={() => {
+                    
+                }}
+            />
             <div className="block h-full">
                 {
                     outputList === true || outputList === false ?
@@ -74,7 +82,7 @@ export default function Essay() {
                                                 backgroundColor: `rgb(${255 - 2.55 * confidence}, 200, 100)`,
                                                 whiteSpace:'pre',
                                             }} 
-                                            className="h-min w-min cursor-pointer tooltip-click hover:scale-105"
+                                            className="h-min w-min cursor-pointer tooltip-click hover:scale-105 duration-200"
                                             onClick={() => {
                                                 setClickedToken(index);
                                             }}
@@ -82,9 +90,9 @@ export default function Essay() {
                                             {token}
 
                                             {
-                                                clickedToken === index &&
-                                                <div className="absolute block bg-blue-200 w-fit h-fit p-4 my-4 shadow-lg">
-                                                    {candidates?.map((candidate, index) => {
+                                                clickedToken === index && candidates &&
+                                                <div className="absolute block bg-blue-200 w-fit h-fit p-1 my-1 shadow-lg">
+                                                    {candidates.map((candidate, index) => {
                                                         return (
                                                             <div className="p-1 cursor-pointer" key={index}>
                                                                 {candidate}
