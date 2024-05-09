@@ -2,14 +2,28 @@
 
 import Spinner from "@/components/spinner";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Essay() {
     const [enteredText, setEnteredText] = useState<string>("");
-    const [outputList, setOutputList] = useState<boolean | any[][]>(false);
+    const [outputList, setOutputList] = useState<boolean | (string | number)[][]>(false);
+    const [clickedToken, setClickedToken] = useState<number | undefined>(undefined);
 
     const testInput = "On the Great Barrier Reef, there are at least 400 different species of coral"
     const testOutput = [['On', 23.920625447028794, '<h1>', 'package', 'The'], [' the', 100.0, ' the', ' a', ' January'], [' Great', 0, ' occasion', ' first', ' morning'], [' Barrier', 91.57519128171118, ' Wall', ' Lakes', ' Plains'], [' Reef', 100.0, ' Reef', ' Re', ','], [',', 100.0, ',', '’', ' ('], [' there', 76.05596437756127, ' the', ' a', ' there'], [' are', 100.0, ' are', ' is', '’'], [' at', 55.97928177303322, ' many', ' a', ' two'], [' least', 100.0, ' least', 'least', 'titudes'], [' ', 0, ' two', ' three', ' five'], ['4', 84.47529208460213, '1', '2', 'two'], ['0', 100.0, '0', '5', '2'], ['0', 100.0, '0', ' ,', '2'], [' different', 66.37263330209878, '0', ' ,', ' species'], [' species', 100.0, ' species', ' kinds', ' types'], [' of', 100.0, ' of', '.', ' .'], [' coral', 96.2389435689176, ' fish', ' coral', ' reef']]
+
+    useEffect(() => {
+        const docClicked = (e : MouseEvent) => {
+            if (!(e.target as HTMLElement).classList.contains("tooltip-click")) {
+                setClickedToken(undefined);
+            }
+        }
+
+        document.body.addEventListener('click', docClicked)
+        return () => {
+            document.body.removeEventListener('click', docClicked)
+        }
+    }, [])
 
     return (
         <div className="absolute block w-full h-full bg-gray-100">
@@ -42,14 +56,38 @@ export default function Essay() {
                         <div style={{flexWrap: 'wrap'}} className="relative flex h-min w-full">
                             {
                                 outputList.map((value, index) => {
-                                    let token = value[0];
-                                    let confidence = -value[1] + 100
-                                    let candidates = value[2]
-                                    
+                                    let token = value[0] as string;
+                                    let confidence = value[1] as number;
+                                    let candidates;
+                                    if (token === " ") {
+                                        confidence = 100;
+                                    }
+                                    else {
+                                        candidates = [value[2], value[3], value[4]] as [string, string, string] || undefined;
+                                    }
 
                                     return(
-                                        <div key={index} style={{backgroundColor: `rgb(${2.55 * confidence}, 200, 100)`}} className="h-min w-min px-1 cursor-pointer">
+                                        <div 
+                                            key={index} 
+                                            style={{backgroundColor: `rgb(${255 - 2.55 * confidence}, 200, 100)`, whiteSpace:'pre'}} 
+                                            className="h-min w-min cursor-pointer tooltip-click"
+                                            onClick={(e) => {
+                                                setClickedToken(index);
+                                            }}
+                                        >
                                             {token}
+                                            {
+                                                clickedToken === index &&
+                                                <div className="w-12 h-12 absolute block bg-white z-90">
+                                                    {candidates?.map((candidate, index) => {
+                                                        return (
+                                                            <div className="p-1" key={index}>
+                                                                {candidate}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            }
                                         </div>
                                     )
                                 })
