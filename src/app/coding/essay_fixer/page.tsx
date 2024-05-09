@@ -31,15 +31,15 @@ export default function Essay() {
                 <div className="font-bold">
                     AI Essay Checker
                 </div>
-                <div className="text-sm">
-                    Get detailed annotation showing which parts of your essay ChatGPT likes and doesn't like, and get suggestions for alternate word choices.<br/>
-                    You could get ChatGPT to write it for you, but it's honestly just better if you write it yourself and then ChatGPT modifies it. Yeah that's right I said it.
+                <div className="text-sm max-w-2/3">
+                    Get detailed annotation showing which parts of your essay ChatGPT likes and doesn't like. Click to get suggestions for alternate word choices. Large Language Models work by taking a string of text, usually the text they already sent, and deciding what the next word should be. This tool shows how much ChatGPT agrees with your word choices.<br/>
                 </div>
             </div>
             <div className="block h-full">
                 {
                     outputList === true || outputList === false ?
                     <textarea 
+                        name="essay-input"
                         className={clsx("w-full h-[50%] bg-gray-50 p-4", [outputList !== false && "text-gray-700"])} 
                         placeholder="Paste your essay here..." 
                         style={{resize: "none", accentColor: 'transparent', pointerEvents: outputList !== false ? "none" : 'unset'}}
@@ -53,7 +53,7 @@ export default function Essay() {
                     />
                     :
                     <div className="relative flex min-h-[50%] w-full bg-white">
-                        <div style={{flexWrap: 'wrap'}} className="relative flex h-min w-full">
+                        <div style={{flexWrap: 'wrap'}} className="relative flex h-min w-full wrap">
                             {
                                 outputList.map((value, index) => {
                                     let token = value[0] as string;
@@ -67,21 +67,26 @@ export default function Essay() {
                                     }
 
                                     return(
+
                                         <div 
                                             key={index} 
-                                            style={{backgroundColor: `rgb(${255 - 2.55 * confidence}, 200, 100)`, whiteSpace:'pre'}} 
-                                            className="h-min w-min cursor-pointer tooltip-click"
-                                            onClick={(e) => {
+                                            style={{
+                                                backgroundColor: `rgb(${255 - 2.55 * confidence}, 200, 100)`,
+                                                whiteSpace:'pre',
+                                            }} 
+                                            className="h-min w-min cursor-pointer tooltip-click hover:scale-105"
+                                            onClick={() => {
                                                 setClickedToken(index);
                                             }}
                                         >
                                             {token}
+
                                             {
                                                 clickedToken === index &&
-                                                <div className="w-12 h-12 absolute block bg-white z-90">
+                                                <div className="absolute block bg-blue-200 w-fit h-fit p-4 my-4 shadow-lg">
                                                     {candidates?.map((candidate, index) => {
                                                         return (
-                                                            <div className="p-1" key={index}>
+                                                            <div className="p-1 cursor-pointer" key={index}>
                                                                 {candidate}
                                                             </div>
                                                         )
@@ -108,7 +113,7 @@ export default function Essay() {
                                 else {
                                     setTimeout(() => {    
                                         setOutputList(testOutput)
-                                    }, 1000);
+                                    }, 500);
                                 }
                         } : undefined}
                     >
