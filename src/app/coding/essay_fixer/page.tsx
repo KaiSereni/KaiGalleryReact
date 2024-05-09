@@ -6,9 +6,10 @@ import { useState } from "react";
 
 export default function Essay() {
     const [enteredText, setEnteredText] = useState<string>("");
-    const [outputList, setOutputList] = useState<boolean | {[key: string]: string[]}>(false);
+    const [outputList, setOutputList] = useState<boolean | any[][]>(false);
 
-    
+    const testInput = "On the Great Barrier Reef, there are at least 400 different species of coral"
+    const testOutput = [['On', 23.920625447028794, '<h1>', 'package', 'The'], [' the', 100.0, ' the', ' a', ' January'], [' Great', 0, ' occasion', ' first', ' morning'], [' Barrier', 91.57519128171118, ' Wall', ' Lakes', ' Plains'], [' Reef', 100.0, ' Reef', ' Re', ','], [',', 100.0, ',', '’', ' ('], [' there', 76.05596437756127, ' the', ' a', ' there'], [' are', 100.0, ' are', ' is', '’'], [' at', 55.97928177303322, ' many', ' a', ' two'], [' least', 100.0, ' least', 'least', 'titudes'], [' ', 0, ' two', ' three', ' five'], ['4', 84.47529208460213, '1', '2', 'two'], ['0', 100.0, '0', '5', '2'], ['0', 100.0, '0', ' ,', '2'], [' different', 66.37263330209878, '0', ' ,', ' species'], [' species', 100.0, ' species', ' kinds', ' types'], [' of', 100.0, ' of', '.', ' .'], [' coral', 96.2389435689176, ' fish', ' coral', ' reef']]
 
     return (
         <div className="absolute block w-full h-full bg-gray-100">
@@ -17,7 +18,7 @@ export default function Essay() {
                     AI Essay Checker
                 </div>
                 <div className="text-sm">
-                    Get detailed annotation showing where your essay sounds more or less professional, and get suggestions for alternate word choices.<br/>
+                    Get detailed annotation showing which parts of your essay ChatGPT likes and doesn't like, and get suggestions for alternate word choices.<br/>
                     You could get ChatGPT to write it for you, but it's honestly just better if you write it yourself and then ChatGPT modifies it. Yeah that's right I said it.
                 </div>
             </div>
@@ -40,18 +41,15 @@ export default function Essay() {
                     <div className="relative flex min-h-[50%] w-full bg-white">
                         <div style={{flexWrap: 'wrap'}} className="relative flex h-min w-full">
                             {
-                                Object.keys(outputList).map((value, index) => {
-                                    let placeInList = 100;
-                                    let candidates = outputList[value]
-                                    for (let i = 0; i < candidates.length; i++) {
-                                        if (candidates[i] == value) {
-                                            placeInList = i;
-                                        }
-                                    }
+                                outputList.map((value, index) => {
+                                    let token = value[0];
+                                    let confidence = -value[1] + 100
+                                    let candidates = value[2]
+                                    
 
                                     return(
-                                        <div key={index} style={{backgroundColor: `rgb(${Math.min(100 * placeInList, 255)}, 200, 100)`}} className="h-min w-min px-1">
-                                            {value}
+                                        <div key={index} style={{backgroundColor: `rgb(${2.55 * confidence}, 200, 100)`}} className="h-min w-min px-1 cursor-pointer">
+                                            {token}
                                         </div>
                                     )
                                 })
@@ -70,14 +68,8 @@ export default function Essay() {
                                     console.error("URL UNKNOWN :3");
                                 }
                                 else {
-                                    setTimeout(() => {
-                                        setOutputList({
-                                            "The": ["A", "For", "The"],
-                                            "sun": ["thing", "object", "day", "ball"],
-                                            "is": ["had", "is", "will"],
-                                            "hot": ["hot", "big", "very", "not"],
-                                            "and": ["without", "because", "for", "and"]
-                                        })
+                                    setTimeout(() => {    
+                                        setOutputList(testOutput)
                                     }, 1000);
                                 }
                         } : undefined}
