@@ -61,7 +61,7 @@ export default function Essay() {
                     />
                     :
                     <div className="relative flex min-h-[50%] w-full bg-white">
-                        <div style={{flexWrap: 'wrap'}} className="relative flex h-min w-full wrap">
+                        <div style={{flexWrap: 'wrap'}} className="relative flex h-min w-full wrap m-2">
                             {
                                 outputList.map((value, index) => {
                                     let token = value[0] as string;
@@ -79,7 +79,7 @@ export default function Essay() {
                                         <div 
                                             key={index} 
                                             style={{
-                                                backgroundColor: `rgb(${255 - 2.55 * confidence}, 200, 100)`,
+                                                backgroundColor: `hsl(${confidence} 90 60)`,
                                                 whiteSpace:'pre',
                                             }} 
                                             className="h-min w-min cursor-pointer tooltip-click hover:scale-105 duration-200"
@@ -92,9 +92,9 @@ export default function Essay() {
                                             {
                                                 clickedToken === index && candidates &&
                                                 <div className="absolute block bg-blue-200 w-fit h-fit p-1 my-1 shadow-lg">
-                                                    {candidates.map((candidate, index) => {
+                                                    {candidates.map((candidate, candidateIndex) => {
                                                         return (
-                                                            <div className="p-1 cursor-pointer" key={index}>
+                                                            <div className="p-1 cursor-pointer duration-200" key={candidateIndex}>
                                                                 {candidate}
                                                             </div>
                                                         )
