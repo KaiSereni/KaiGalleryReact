@@ -28,7 +28,7 @@ export default function Essay() {
 
     return (
         <div className="absolute block w-full h-full bg-gray-100">
-            <div className="block h-min w-full shadow text-2xl p-4 pl-6 justify-start items-center">
+            <div className="block h-min w-full text-2xl p-4 pl-6 justify-start items-center">
                 <div className="font-bold">
                     AI Essay Checker
                 </div>
@@ -38,7 +38,7 @@ export default function Essay() {
             </div>
             <img 
                 src={copy.src}
-                className="mt-8 mb-2 w-4 h-4 bg-blue-100 rounded shadow cursor-pointer hover:scale-105 duration-200"
+                className="relative mt-8 mb-2 ml-4 w-8 h-8 p-1 bg-blue-200 rounded-lg shadow cursor-pointer hover:scale-105 duration-200"
                 onClick={() => {
                     
                 }}
