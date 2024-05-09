@@ -26,7 +26,8 @@ def get_candidates(input_ids, num_candidates):
     for token_id in logits[0, -1].topk(num_candidates).indices.tolist():
         token = tokenizer.decode(token_id)
         confidence = logits[0, -1, token_id].item()
-        top_candidates.append((token, confidence))
+        if not token.isspace():
+            top_candidates.append((token, confidence))
 
     # Normalize confidence scores to [0, 1]
     max_confidence = max(confidence for _, confidence in top_candidates)
