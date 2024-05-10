@@ -32,17 +32,26 @@ export default function Essay() {
                 <div className="font-bold">
                     AI Essay Checker
                 </div>
-                <div className="text-sm max-w-2/3">
+                <div className="text-sm w-2/3">
                     Get detailed annotation showing which parts of your essay ChatGPT likes and doesn't like. Click to get suggestions for alternate word choices. Large Language Models work by taking a string of text, usually the text they already sent, and deciding what the next word should be. This tool shows how much ChatGPT agrees with your word choices.<br/>
                 </div>
             </div>
-            <img 
-                src={copy.src}
-                className="relative mt-8 mb-2 ml-4 w-8 h-8 p-1 bg-blue-200 rounded-lg shadow cursor-pointer hover:scale-105 duration-200"
-                onClick={() => {
-                    
-                }}
-            />
+            {
+                // show if outputList is not a boolean value
+                outputList !== false && outputList !== true &&
+                <img 
+                    src={copy.src}
+                    className="relative mt-8 mb-2 ml-4 w-8 h-8 p-1 bg-blue-200 rounded-lg shadow cursor-pointer hover:scale-105 duration-200"
+                    onClick={() => {
+                        let allTokens = []
+                        for (let i = 0; i < outputList.length; i++) {
+                            let token = outputList[i][0];
+                            allTokens.push(token);
+                        }
+                        navigator.clipboard.writeText(allTokens.join(""))   
+                    }}
+                />
+            }
             <div className="block h-full">
                 {
                     outputList === true || outputList === false ?

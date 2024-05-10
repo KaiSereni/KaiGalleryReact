@@ -1,11 +1,16 @@
 import json
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModel
+import transformers
+import os
+import kagglehub
 
 # Load Gemma 2B model
-model_id = "/kaggle/input/gemma/transformers/2b/2"
-tokenizer = AutoTokenizer.from_pretrained(model_id)
-model = AutoModelForCausalLM.from_pretrained(model_id, hidden_activation="gelu_pytorch_tanh")
+with open ('hf_token.txt') as f:
+    hf_token = f.read()
+
+tokenizer = AutoTokenizer.from_pretrained("google/gemma-2b", token=hf_token)
+model = AutoModelForCausalLM.from_pretrained("google/gemma-2b", token=hf_token)
 
 def clean_tokens(list):
     new_list = []
@@ -43,7 +48,4 @@ def get_candidates(input_ids, num_candidates):
 
 def tokenize(input_string):
     # Load Gemma 2B model
-    model_id = "/kaggle/input/gemma/transformers/2b/2"
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
-
     return tokenizer(input_string, return_tensors="pt").input_ids, clean_tokens(tokenizer(input_string, return_tensors="pt").tokens())

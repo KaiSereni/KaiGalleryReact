@@ -2,11 +2,12 @@ from torch import tensor
 from gemma_logic import get_candidates, tokenize
 import json
 
-def get_predictions(tokens_list):
+# helper function
+def get_predictions(tokens_list, context_title):
     token_confidence_list = []
 
     for i, token in enumerate(tokens_list):
-        context = " ".join(tokens_list[:i])
+        context = context_title + " ".join(tokens_list[:i])
         context_ids, _ = tokenize(context)
         candidate_predictions = get_candidates(context_ids, 100)  # Get predictions
         # Create a new entry
@@ -14,10 +15,11 @@ def get_predictions(tokens_list):
 
     return token_confidence_list
 
-def get_corrections(string):
+# MAIN FUNCTION
+def get_corrections(string, context_title):
     corrected_output = []
     input_ids, tokens_list = tokenize(string)
-    predictions = get_predictions(tokens_list)
+    predictions = get_predictions(tokens_list, context_title=context_title)
 
     #print(predictions)
 
@@ -39,5 +41,6 @@ def get_corrections(string):
     return corrected_output
 
 # Example usage:
-corrections = get_corrections("The sun is the hottest object in the world")
-print(corrections)
+if __name__ == "__main__":
+    corrections = get_corrections("The sun is the hottest object in the world", "What is the hottest object in the world?")
+    print(corrections)
