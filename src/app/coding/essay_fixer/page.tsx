@@ -31,8 +31,8 @@ export default function Essay() {
                 <div className="font-bold">
                     AI Essay Checker
                 </div>
-                <div className="text-sm w-2/3">
-                    Get detailed annotation showing which parts of your essay ChatGPT likes and doesn't like. Click to get suggestions for alternate word choices. Large Language Models work by taking a string of text, usually the text they already sent, and deciding what the next word should be. This tool shows how much ChatGPT agrees with your word choices.<br/>
+                <div className="text-sm w-2/3 my-2">
+                    Get detailed annotation showing which parts of your essay AI likes and doesn't like. Click to get suggestions for alternate word choices. <br/> Large Language Models (like ChatGPT) work by taking a string of text, usually the text they already sent, and deciding what the next word should be. With ChatGPT, this process is repeated until you have a full response. This tool uses that logic to get wording feedback from the neural network behind natural language AIs.<br/>
                 </div>
             </div>
             {
@@ -57,7 +57,7 @@ export default function Essay() {
                     <>
                         <textarea
                             name="essay-title"
-                            className={clsx("w-full h-[2em] bg-gray-50 pl-4 py-1", [outputList !== false && "text-gray-700"])}
+                            className={clsx("w-full h-[2em] bg-gray-50 pl-4 py-1 shadow-md", [outputList !== false && "text-gray-700"])}
                             placeholder="Title of your essay..."
                             style={{resize: "none", accentColor: 'transparent', pointerEvents: outputList !== false ? "none" : 'unset', overflow: "hidden"}}
                             value={enteredTitle}
@@ -69,7 +69,7 @@ export default function Essay() {
                         />
                         <textarea 
                             name="essay-input"
-                            className={clsx("w-full h-[50%] bg-gray-50 p-4", [outputList !== false && "text-gray-700"])} 
+                            className={clsx("w-full h-[50%] bg-gray-50 p-4 shadow-md", [outputList !== false && "text-gray-700"])} 
                             placeholder="Paste your essay here..." 
                             style={{resize: 'vertical', accentColor: 'transparent', pointerEvents: outputList !== false ? "none" : 'unset'}}
                             value={enteredText}
@@ -88,12 +88,10 @@ export default function Essay() {
                                 outputList.map((value, index) => {
                                     let token = value[0] as string;
                                     let confidence = value[1] as number;
-                                    let candidates;
-                                    if (token === " ") {
-                                        confidence = 100;
-                                    }
-                                    else {
-                                        candidates = [value[2], value[3], value[4]] as [string, string, string] || undefined;
+                                    let candidates = [value[2], value[3], value[4]] as [string, string, string] || undefined;
+
+                                    if (token === "\n") {
+                                        return <div key={index} style={{width: '100%'}}></div>
                                     }
 
                                     return(
@@ -132,7 +130,7 @@ export default function Essay() {
                 }
                 <div className="w-full flex">
                     <div
-                        className={clsx("bg-blue-200 h-min py-2 px-4 m-4 mr-2 font-semibold rounded-2xl shadow-lg cursor-pointer duration-200", [outputList === false ? "hover:bg-blue-300 hover:scale-95 hover:shadow-none" : "bg-blue-300 scale-95 shadow-none text-gray-700"])}
+                        className={clsx("bg-blue-300 h-min py-2 px-4 m-4 mr-2 font-semibold rounded-2xl shadow-lg cursor-pointer duration-200", [outputList === false ? "hover:bg-blue-400 hover:scale-95 hover:shadow-none" : "bg-blue-300 scale-95 shadow-none text-gray-700"])}
                         onClick={
                             () => {
                                 setOutputList(true);
