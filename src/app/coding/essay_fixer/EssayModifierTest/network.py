@@ -1,7 +1,6 @@
 from generate_list import get_corrections
 from flask import Flask, request
 import json
-import logging
 from flask_cors import CORS
 
 app = Flask(__name__)
