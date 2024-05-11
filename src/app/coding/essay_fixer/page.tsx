@@ -8,6 +8,7 @@ import useSWR from "swr";
 
 export default function Essay() {
     const [enteredText, setEnteredText] = useState<string>("");
+    const [enteredTitle, setEnteredTitle] = useState<string>("");
     const [outputList, setOutputList] = useState<boolean | (string | number)[][]>(false);
     const [clickedToken, setClickedToken] = useState<number | undefined>(undefined);
 
@@ -53,19 +54,33 @@ export default function Essay() {
             <div className="block h-full">
                 {
                     outputList === true || outputList === false ?
-                    <textarea 
-                        name="essay-input"
-                        className={clsx("w-full h-[50%] bg-gray-50 p-4", [outputList !== false && "text-gray-700"])} 
-                        placeholder="Paste your essay here..." 
-                        style={{resize: "none", accentColor: 'transparent', pointerEvents: outputList !== false ? "none" : 'unset'}}
-                        value={enteredText}
-                        onInput={(ev) => {
-                            const el = ev.target as HTMLTextAreaElement;
-                            const input = el.value;
-                            setEnteredText(input)
-                        }}
-                        
-                    />
+                    <>
+                        <textarea
+                            name="essay-title"
+                            className={clsx("w-full h-[2em] bg-gray-50 pl-4 py-1", [outputList !== false && "text-gray-700"])}
+                            placeholder="Title of your essay..."
+                            style={{resize: "none", accentColor: 'transparent', pointerEvents: outputList !== false ? "none" : 'unset', overflow: "hidden"}}
+                            value={enteredTitle}
+                            onInput={(ev) => {
+                                const el = ev.target as HTMLTextAreaElement;
+                                const input = el.value;
+                                setEnteredTitle(input)
+                            }}
+                        />
+                        <textarea 
+                            name="essay-input"
+                            className={clsx("w-full h-[50%] bg-gray-50 p-4", [outputList !== false && "text-gray-700"])} 
+                            placeholder="Paste your essay here..." 
+                            style={{resize: 'vertical', accentColor: 'transparent', pointerEvents: outputList !== false ? "none" : 'unset'}}
+                            value={enteredText}
+                            onInput={(ev) => {
+                                const el = ev.target as HTMLTextAreaElement;
+                                const input = el.value;
+                                setEnteredText(input)
+                            }}
+                            
+                        />
+                    </>
                     :
                     <div className="relative flex min-h-[50%] w-full bg-white">
                         <div style={{flexWrap: 'wrap'}} className="relative flex h-min w-full wrap m-2">
@@ -126,7 +141,7 @@ export default function Essay() {
                                     headers: {
                                         'Content-Type': 'application/json'
                                     },
-                                    body: JSON.stringify({ "string": enteredText, "context_title": "What is the hottest object?" })
+                                    body: JSON.stringify({ "string": enteredText, "context_title": enteredTitle })
                                 })
                                 .then(response => response.json())
                                 .then(j => j["data"])
