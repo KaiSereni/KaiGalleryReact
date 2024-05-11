@@ -7,7 +7,7 @@ def get_predictions(tokens_list, context_title):
     token_confidence_list = []
 
     for i, token in enumerate(tokens_list):
-        context = context_title + " ".join(tokens_list[:i])
+        context = context_title + "\n" + " ".join(tokens_list[:i])
         context_ids, _ = tokenize(context)
         candidate_predictions = get_candidates(context_ids, 100)  # Get predictions
         # Create a new entry
@@ -42,5 +42,5 @@ def get_corrections(string, context_title):
 
 # Example usage:
 if __name__ == "__main__":
-    corrections = get_corrections("The sun is the hottest object in the world", "What is the hottest object in the world?")
+    corrections = get_corrections("The sun is the hottest object in the universe", "What is the hottest object?")
     print(corrections)

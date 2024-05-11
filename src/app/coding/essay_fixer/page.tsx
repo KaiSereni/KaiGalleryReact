@@ -4,14 +4,12 @@ import Spinner from "@/components/spinner";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import copy from "../../../../public/image/copyClipboard.svg"
+import useSWR from "swr";
 
 export default function Essay() {
     const [enteredText, setEnteredText] = useState<string>("");
     const [outputList, setOutputList] = useState<boolean | (string | number)[][]>(false);
     const [clickedToken, setClickedToken] = useState<number | undefined>(undefined);
-
-    const testInput = "On the Great Barrier Reef, there are at least 400 different species of coral"
-    const testOutput = [['On', 23.920625447028794, '<h1>', 'package', 'The'], [' the', 100.0, ' the', ' a', ' January'], [' Great', 0, ' occasion', ' first', ' morning'], [' Barrier', 91.57519128171118, ' Wall', ' Lakes', ' Plains'], [' Reef', 100.0, ' Reef', ' Re', ','], [',', 100.0, ',', '’', ' ('], [' there', 76.05596437756127, ' the', ' a', ' there'], [' are', 100.0, ' are', ' is', '’'], [' at', 55.97928177303322, ' many', ' a', ' two'], [' least', 100.0, ' least', 'least', 'titudes'], [' ', 0, ' two', ' three', ' five'], ['4', 84.47529208460213, '1', '2', 'two'], ['0', 100.0, '0', '5', '2'], ['0', 100.0, '0', ' ,', '2'], [' different', 66.37263330209878, '0', ' ,', ' species'], [' species', 100.0, ' species', ' kinds', ' types'], [' of', 100.0, ' of', '.', ' .'], [' coral', 96.2389435689176, ' fish', ' coral', ' reef']]
 
     useEffect(() => {
         const docClicked = (e : MouseEvent) => {
@@ -121,18 +119,25 @@ export default function Essay() {
                     <div
                         className={clsx("bg-blue-200 h-min py-2 px-4 m-4 mr-2 font-semibold rounded-2xl shadow-lg cursor-pointer duration-200", [outputList === false ? "hover:bg-blue-300 hover:scale-95 hover:shadow-none" : "bg-blue-300 scale-95 shadow-none text-gray-700"])}
                         onClick={
-                            outputList === false ?
                             () => {
                                 setOutputList(true);
-                                if (process.env.NODE_ENV === "production") {
-                                    console.error("URL UNKNOWN :3");
-                                }
-                                else {
-                                    setTimeout(() => {    
-                                        setOutputList(testOutput)
-                                    }, 500);
-                                }
-                        } : undefined}
+                                fetch('http://localhost:5000/correct', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ "string": enteredText, "context_title": "What is the hottest object?" })
+                                })
+                                .then(response => response.json())
+                                .then(j => j["data"])
+                                .then(data => {
+                                    setOutputList(data);
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                            }
+                    }
                     >
                         <div className="flex items-center justify-center">
                             {outputList === true && <Spinner isBlack={true}/>}
