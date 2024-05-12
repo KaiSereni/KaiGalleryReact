@@ -89,11 +89,14 @@ export default function Essay() {
                                 outputList.map((value, index) => {
                                     let token = value[0] as string;
                                     let confidence = value[1] as number;
-                                    confidence = Math.min((confidence + 40) * 2.5, 100);
                                     let candidates = [value[2], value[3], value[4]] as [string, string, string] || undefined;
 
                                     if (token === "\n") {
                                         return <div key={index} style={{width: '100%'}}></div>
+                                    }
+
+                                    if (token === " ") {
+                                        return <div key={index} style={{width: '0.5em'}}></div>
                                     }
 
                                     return(
