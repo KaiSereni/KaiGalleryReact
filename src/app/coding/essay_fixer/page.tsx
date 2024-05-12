@@ -9,7 +9,7 @@ import useSWR from "swr";
 export default function Essay() {
     const [enteredText, setEnteredText] = useState<string>("");
     const [enteredTitle, setEnteredTitle] = useState<string>("");
-    const [outputList, setOutputList] = useState<boolean | (string | number)[][]>(false);
+    const [outputList, setOutputList] = useState<boolean | "e" | (string | number)[][]>(false);
     const [clickedToken, setClickedToken] = useState<number | undefined>(undefined);
 
     useEffect(() => {
@@ -82,6 +82,7 @@ export default function Essay() {
                         />
                     </>
                     :
+                    outputList !== 'e' &&
                     <div className="relative flex min-h-[50%] w-full bg-white">
                         <div style={{flexWrap: 'wrap'}} className="relative flex h-min w-full wrap m-2">
                             {
@@ -99,7 +100,7 @@ export default function Essay() {
                                         <div 
                                             key={index} 
                                             style={{
-                                                backgroundColor: `hsl(${confidence} 90 60)`,
+                                                backgroundColor: `hsl(${Math.min(confidence, 100)} 90 60)`,
                                                 whiteSpace:'pre',
                                             }} 
                                             className="h-min w-min cursor-pointer tooltip-click hover:scale-105 duration-200"
@@ -112,6 +113,7 @@ export default function Essay() {
                                             {
                                                 clickedToken === index && candidates &&
                                                 <div className="absolute block bg-blue-200 w-fit h-fit p-1 my-1 shadow-lg">
+                                                    <div className="">Agreement: {confidence}</div>
                                                     {candidates.map((candidate, candidateIndex) => {
                                                         return (
                                                             <div className="p-1 cursor-pointer duration-200" key={candidateIndex}>
@@ -148,19 +150,21 @@ export default function Essay() {
                                 })
                                 .catch(error => {
                                     console.error(error);
+                                    setOutputList('e');
                                 });
                             }
                     }
                     >
                         <div className="flex items-center justify-center">
                             {outputList === true && <Spinner isBlack={true}/>}
-                            {outputList === true ? <div className="ml-2">Calculating...</div> : outputList === false ? <div>Calculate</div> : <div>Done!</div>}
+                            {outputList === true ? <div className="ml-2">Calculating...</div> : outputList === false ? <div>Calculate</div> : outputList === 'e' ? <div>Server error. Try shortening the input.</div> : <div>Done!</div>}
                         </div>
                     </div>
                     <div
                         className={clsx("bg-blue-200 h-min py-2 px-4 my-4 font-semibold rounded-2xl shadow-lg cursor-pointer duration-200 hover:bg-blue-300 hover:scale-95 hover:shadow-none")}
                         onClick={() => {
                             setOutputList(false);
+                            setEnteredTitle("");
                             setEnteredText("");
                         }}
                     >
