@@ -39,3 +39,6 @@ next-env.d.ts
 **/venv
 **/.vscode
 **/__pycache__
+src/app/coding/essay_fixer/EssayModifierTest/model_src/gemma-2b/
+src/app/coding/essay_fixer/EssayModifierTest/model_src/gemma-7b/
+src/app/coding/essay_fixer/EssayModifierTest/hf_token.txt
