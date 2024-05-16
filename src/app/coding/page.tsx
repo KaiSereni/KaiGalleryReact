@@ -78,6 +78,18 @@ export default function Coding() {
                         </div>
                     </div>
                 </div>
+                <div className="flex w-full h-auto min-h-64 text-white" style={{backgroundColor: "rgb(75, 50, 190)"}}>
+                    <div className="block w-full items-center space-y-8 my-16 mr-8">
+                        <div className="flex w-auto space-x-2">
+                            <div className="flex m-8">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex w-auto">
+                        <div className="text-7xl font-bold m-8 mt-8 text-right">School Projects</div>
+                    </div>
+                </div>
                 <div className="bg-white w-full h-[150vh]">
                         <Loading isLoading={isLoading}/>
                 </div>
