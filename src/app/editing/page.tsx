@@ -19,17 +19,19 @@ export default function Editing() {
 
     return (
         <>
-            <div 
-                style={{
-                    background: 'radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3))',
-                }}
-                className="w-full h-full fixed z-80"
-            />
-            <div className="fixed w-full h-fit" style={{pointerEvents: 'none'}}>
-                <ScrollAnim idToImgName={idToImgname} totalImages={totalImages}/>
-            </div>
-            <div className="absolute w-full h-[500%]">
-                
+            <div className="absolute w-full h-full min-h-[200vh] bg-black">
+                <div 
+                    style={{
+                        background: 'radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3))',
+                    }}
+                    className="w-full h-full fixed z-80"
+                />
+                <div className="fixed w-1/5 justify-center items-center h-fit" style={{pointerEvents: 'none'}}>
+                    <ScrollAnim idToImgName={idToImgname} totalImages={totalImages}/>
+                </div>
+                <div className="absolute w-full h-[500%]">
+                    
+                </div>
             </div>
         </>
     )

@@ -6,42 +6,22 @@ import Loading from "@/components/loading_screen";
 import caco from "../../../public/image/CascadesAcademyLogo.png"
 import swell from "../../../public/image/SwellAIlogo.svg"
 import dhs from "../../../public/image/DHSLogo.png"
+import ScrollAnim from "@/components/animated_scroll";
 
 export default function Coding() {
 
-    const [shownImage, setShownImage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-
     const totalImages = 69;
-    function handleScroll() {
-        let sh = window.scrollY;
-        setShownImage(Math.floor(sh/9));
-    }
 
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            setIsLoading(false);
-        };
-    });
-    
-    const IDENodeList = () => {
-        let r = []
-        for (let i = 0; i <= totalImages; i++) {
-            let thisName;
-            if (i.toString().length == 1) {
-                thisName = "0" + i;
-            }
-            else {
-                thisName = i.toString();
-            }
-            const thisPath = `ide${thisName}.png`
-
-            r.push(
-                <img key={i} src={thisPath} style={shownImage == i ? {display: "block"} : {display: "none"}} className="absolute h-[700px] min-w-[1244px]"/>
-            )
+    const idToImgname = (id: number) => {
+        let thisName : string;
+        if (id.toString().length == 1) {
+            thisName = "0" + id;
         }
-        return r;
+        else {
+            thisName = "" + id;
+        }
+        return `ide${thisName}.png`;
     }
 
     return (
@@ -50,7 +30,7 @@ export default function Coding() {
                 <div className="block h-[700px]">
                     <div className="flex w-full h-full justify-center bg-gray-50">
                         <img src={grid.src} className="absolute h-[700px] opacity-10"/>
-                        <IDENodeList/>
+                        <ScrollAnim totalImages={totalImages} idToImgName={idToImgname} setIsLoading={setIsLoading}/>
                     </div>
                 </div>
                 <div className="flex w-full h-auto min-h-64 bg-gray-800 text-white">

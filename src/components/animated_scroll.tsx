@@ -5,9 +5,10 @@ import { useEffect } from "react";
 type props = {
     idToImgName: (id: number) => string
     totalImages: number
+    setIsLoading?: (isLoading: boolean) => void
 }
 
-export default function ScrollAnim({idToImgName, totalImages}: props) {
+export default function ScrollAnim({idToImgName, totalImages, setIsLoading}: props) {
 
     useEffect(() => {
 
@@ -21,7 +22,7 @@ export default function ScrollAnim({idToImgName, totalImages}: props) {
             imgel.src = thisName;
             imgel.id = thisName;
             imgel.style.display = 'none'
-            imgel.className = 'absolute h-[256px]'
+            imgel.className = 'w-full absolute'
             container?.appendChild(imgel);
         }
 
@@ -60,11 +61,12 @@ export default function ScrollAnim({idToImgName, totalImages}: props) {
         
         window.addEventListener("scroll", handleScroll);
         return () => {
+            setIsLoading && setIsLoading(false)
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
     return (
-        <div className="animation_container"></div>
+        <div className="animation_container w-full h-full"></div>
     )
 }
