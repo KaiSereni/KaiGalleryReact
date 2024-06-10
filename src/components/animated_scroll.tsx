@@ -22,7 +22,7 @@ export default function ScrollAnim({idToImgName, totalImages, setIsLoading}: pro
             imgel.src = thisName;
             imgel.id = thisName;
             imgel.style.display = 'none'
-            imgel.className = 'w-full absolute'
+            imgel.className = 'h-full absolute'
             container?.appendChild(imgel);
         }
 
@@ -67,6 +67,6 @@ export default function ScrollAnim({idToImgName, totalImages, setIsLoading}: pro
     }, []);
 
     return (
-        <div className="animation_container w-full h-full"></div>
+        <div className="animation_container h-full"></div>
     )
 }
