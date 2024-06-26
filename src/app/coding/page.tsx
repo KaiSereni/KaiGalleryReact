@@ -46,7 +46,7 @@ export default function Coding() {
                             date="April 2024"
                             openUrl="https://forgotai.com"
                         >
-                            My personal AI playground. This is where I host an array of open-source AI projects, 100% coded by me. 
+                            My personal AI playground. This is where I host an array of open-source AI projects, 100% coded by me. I have a fascination with AI, and while researching it, I identified several potential products that didn't yet exist but were in demand. I couldn't just stand by waiting for large companies to develop these things, so I just made them myself and made them open source. I learned how to create a website from concept to launch, how to integrate a backend with advanced code, and how to maintain cost-effectiveness.
                         </ResumeItem>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ export default function Coding() {
                             date="Jan 2024 - Current" 
                             openUrl="https://swellai.com"
                         >
-                            SwellAI is a company that sells a service that specializes in content repurposing. I got a paid internship there in January of 2024 and got hands-on experience in industry-standard full-stack web development for a paid product. From this experience, I learned how to promote, communnicate, and monetize anything I create using the internet. If I ever create a cool script or AI model, that doesn't really matter unless I share it, which is why learning full-stack development is important.
+                            SwellAI is a company that sells a service that specializes in content repurposing. I got a paid internship there in January of 2024 and got hands-on experience in industry-standard full-stack web development for a paid product. From this experience, I learned how to promote, communnicate, and monetize anything I create using the internet. If I ever create a cool script or AI model, that doesn't really matter unless I share it and allow others to use it, which is why learning full-stack development is important.
                         </ResumeItem>
                         <ResumeItem 
                             title="Dermatology Health Specialists" 
@@ -69,7 +69,7 @@ export default function Coding() {
                             date="Oct 2024 - Current" 
                             openUrl="https://derm-health.com"
                         >
-                            At my school, Cascades Academy, all juniors apply for and participate in an internship for the whole school year. I was lucky enough to get a coding internship at a local company called Dermatology Health Specialists. I worked with the lead surgeon and CEO, Dr. Oliver Wisco, to create a customizable patient database and analytics tool. I taught myself how to create advanced logic using ReactJS, and navigated HIPAA compliance. It took the whole year, and the result is very impressive.
+                            At my school, Cascades Academy, all juniors apply for and participate in an internship for the whole school year. I was lucky enough to get a coding internship at a local company called Dermatology Health Specialists. I worked with the lead surgeon and CEO, Dr. Oliver Wisco, to create a customizable patient database and analytics tool. I taught myself how to create advanced logic using ReactJS, and navigated HIPAA compliance. My primary goal was to gather a dataset to train a model to identify skin cancer, and the product is designed to gather the dataset in a way that also improves doctors' lives; a valuable learning experience.
                         </ResumeItem>
                         <ResumeItem 
                             title="Camp CREATE Summer Camp" 
