@@ -11,13 +11,10 @@ export default function Home() {
         <h2>Hover your mouse over a bubble to expand, then click for more info</h2>
       </div>
       <div className="h-content w-full mt-[15vh] flex justify-center items-center space-x-8 hover:space-x-2" style={{pointerEvents: "none"}}>
-        <Bubble link="/coding" title="Coding">
+        <Bubble link="/coding" title="Coding/General Portfolio">
           {blurbs.coding}
         </Bubble>
-        <Bubble link="/editing" title="Film & Video Editing">
-          {blurbs.editing}
-        </Bubble>
-        <Bubble link="/school" title="Academics">
+        <Bubble title="Academics">
           {blurbs.school}
         </Bubble>
         <Bubble link="/about" title="About me">
