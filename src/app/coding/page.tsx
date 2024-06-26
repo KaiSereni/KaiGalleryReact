@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import grid from "../../../public/image/grid.png"
+import fai from "../../../public/image/FAILogo.png"
 import Loading from "@/components/loading_screen";
 import caco from "../../../public/image/CascadesAcademyLogo.png"
 import swell from "../../../public/image/SwellAIlogo.svg"
@@ -37,15 +38,15 @@ export default function Coding() {
                 <div className="block w-full h-auto min-h-64 bg-blue-900 text-white">
                     <div className="flex w-auto p-8">
                         <p className="text-7xl font-bold w-full">Personal Projects</p>
-                    </div>
+                    </div>               
                     <div className="flex flex-wrap w-full items-center">
                         <ResumeItem 
-                            title="Swell AI" 
-                            iconSrc={swell.src}
-                            date="Jan 2024 - Current" 
-                            openUrl="https://swellai.com"
+                            title="Forgot AI" 
+                            iconSrc={fai.src}
+                            date="April 2024"
+                            openUrl="https://forgotai.com"
                         >
-                            SwellAI is a company that sells a service that specializes in content repurposing. I got a paid internship there in January of 2024 and got hands-on experience in industry-standard full-stack web development for a paid product. From this experience, I learned how to promote, communnicate, and monetize anything I create using the internet. If I ever create a cool script or AI model, that doesn't really matter unless I share it, which is why learning full-stack development is important.
+                            My personal AI playground. This is where I host an array of open-source AI projects, 100% coded by me. 
                         </ResumeItem>
                     </div>
                 </div>
@@ -81,6 +82,7 @@ export default function Coding() {
                     </div>
                 </div>
             </div>
+            <Loading isLoading={isLoading}/>
         </>
     )
 }
