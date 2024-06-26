@@ -34,9 +34,24 @@ export default function Coding() {
                         <ScrollAnim totalImages={totalImages} idToImgName={idToImgname} setIsLoading={setIsLoading}/>
                     </div>
                 </div>
+                <div className="block w-full h-auto min-h-64 bg-blue-900 text-white">
+                    <div className="flex w-auto p-8">
+                        <p className="text-7xl font-bold w-full">Personal Projects</p>
+                    </div>
+                    <div className="flex flex-wrap w-full items-center">
+                        <ResumeItem 
+                            title="Swell AI" 
+                            iconSrc={swell.src}
+                            date="Jan 2024 - Current" 
+                            openUrl="https://swellai.com"
+                        >
+                            SwellAI is a company that sells a service that specializes in content repurposing. I got a paid internship there in January of 2024 and got hands-on experience in industry-standard full-stack web development for a paid product. From this experience, I learned how to promote, communnicate, and monetize anything I create using the internet. If I ever create a cool script or AI model, that doesn't really matter unless I share it, which is why learning full-stack development is important.
+                        </ResumeItem>
+                    </div>
+                </div>
                 <div className="block w-full h-auto min-h-64 bg-gray-800 text-white">
                     <div className="flex w-auto p-8">
-                        <p className="text-7xl font-bold">Internships and Jobs</p>
+                        <p className="text-7xl font-bold w-full text-right">Internships and Jobs</p>
                     </div>
                     <div className="flex flex-wrap w-full items-center">
                         <ResumeItem 
@@ -64,21 +79,6 @@ export default function Coding() {
                                 I had an opportunity, after volunteering as a Counselor in Training for a year, to become a paid Junior Counselor for Cascades Academy's Camp Create. It was my job to assist the counselors in giving the 2nd-5th grade kids a fun time at camp, and my responsibilities included keeping the kids on task, cleaning, safety, and I also led my own one-hour curriculum. I learned the importance of helping my communnity, and how to work effectively with kids.
                         </ResumeItem>
                     </div>
-                </div>
-                <div className="flex w-full h-auto min-h-64 text-white" style={{backgroundColor: "rgb(75, 50, 190)"}}>
-                    <div className="block w-full items-center space-y-8 my-16 mr-8">
-                        <div className="flex w-auto space-x-2">
-                            <div className="flex m-8">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex w-auto">
-                        <div className="text-7xl font-bold m-8 mt-8 text-right">School Projects</div>
-                    </div>
-                </div>
-                <div className="bg-white w-full h-[150vh]">
-                        <Loading isLoading={isLoading}/>
                 </div>
             </div>
         </>

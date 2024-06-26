@@ -10,8 +10,9 @@ type Props = {
 }
 
 export default function ResumeItem({title, date, iconSrc, children, openUrl}: Props) {
-    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState<number>(0);
     useEffect(() => {
+        setWindowWidth(window.innerWidth);
         window.addEventListener("resize", () => {
             setWindowWidth(window.innerWidth);
         });
