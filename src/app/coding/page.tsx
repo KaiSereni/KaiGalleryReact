@@ -10,6 +10,8 @@ import caco from "../../../public/image/CascadesAcademyLogo.png"
 import swell from "../../../public/image/SwellAIlogo.svg"
 import dhs from "../../../public/image/DHSLogo.png"
 import pc from "../../../public/image/PC.jpg"
+import mbw from "../../../public/image/mbw.jpg"
+import cplus from "../../../public/image/cplus.jpeg"
 import ScrollAnim from "@/components/animated_scroll";
 import ResumeItem from "@/components/resume-item-box";
 
@@ -57,7 +59,7 @@ export default function Coding() {
                             date="April 2016 - Aug 2020"
                             openUrl="https://youtube.com/DudePerfict"
                         >
-                            This YouTube channel is where I first started making videos with my friends, and adding simple VFX wherever I could. I loved editing, and used any free software I could get my hands on to make creative videos. I made videos on this channel ranging from <a className="text-blue-400 underline" href="https://youtu.be/4Khc1lve8NA?si=qMuVPD6TIZvv6z_w" target="blank">electrical engineering and coding</a> to <a className="text-blue-400 underline" href="https://youtu.be/HWNwnK0-w1g?si=oX1-7pxl-r9kzghW" target="blank">spy skits</a> I made with my friends in my neighborhood.
+                            This YouTube channel is where I first started making videos with my friends, and adding simple VFX wherever I could. I loved editing, and used any free software I could get my hands on to make creative videos. I made videos on this channel ranging from <a className="text-blue-400 underline" href="https://youtu.be/4Khc1lve8NA" target="blank">electrical engineering and coding</a> to <a className="text-blue-400 underline" href="https://youtu.be/HWNwnK0-w1g" target="blank">spy skits</a> I made with my friends in my neighborhood.
                         </ResumeItem>
                         <ResumeItem 
                             title="Pohakoo (New YouTube channel)" 
@@ -109,6 +111,26 @@ export default function Coding() {
                             openUrl="https://cascadesacademy.org/community/camp-create"
                         >
                                 I had an opportunity, after volunteering as a Counselor in Training for a year, to become a paid Junior Counselor for Cascades Academy's Camp Create. It was my job to assist the counselors in giving the 2nd-5th grade kids a fun time at camp, and my responsibilities included keeping the kids on task, cleaning, safety, and I also led my own one-hour curriculum. I learned the importance of helping my communnity, and how to work effectively with kids.
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="Commissioned Video Edit - MattBatWings" 
+                            date="Dec 2022"
+                            openUrl="https://www.youtube.com/watch?v=TRicjrtDPDI"
+                            iconSrc={mbw.src}
+                        >
+                            <div className="block w-full h-full">
+                                MattBatWings, a YouTuber with over 200,000 subscribers, commissioned me to edit a recap of the videos he had made in 2022 for New Year, 2023. He is an amaizng Minecraft YouTuber and integrates low-level computer archetecture into a system in Minecraft called Redstone to create amazing interactive games and machines, with amazing explanations. I have been a fan of his channel for a long time.
+                            </div>
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="Commissioned Video Edit - Cloaks+" 
+                            date="March 2023"
+                            openUrl="https://www.tiktok.com/@cloaksplus/video/7212366198481194282"
+                            iconSrc={cplus.src}
+                        >
+                            <div className="block w-full h-full">
+                                A company responsible for promoting a Minecraft software commissioned me to make an edit for their TikTok in a common Minecraft editing style. They have over 130,000 followers.
+                            </div>
                         </ResumeItem>
                     </div>
                 </div>

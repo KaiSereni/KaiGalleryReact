@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
@@ -53,14 +55,14 @@ export default function ResumeItem({title, date, iconSrc, children, openUrl}: Pr
                     </div>
                     {
                         date &&
-                        <div className="w-full h-fit items-center justify-center flex mt-1 text-xs text-gray-300">
+                        <div className="w-full h-fit items-center justify-center flex text-xs text-gray-300">
                             {date}
                         </div>
                     }
                     <div className="w-full h-full mt-2">
-                        <p className="text-white">
+                        <div className="text-white">
                             {children}
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
