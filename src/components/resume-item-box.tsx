@@ -5,7 +5,7 @@ type Props = {
     title: string;
     date?: string;
     openUrl?: string;
-    iconSrc: string;
+    iconSrc?: string;
     children?: React.ReactNode;
 }
 
@@ -34,11 +34,21 @@ export default function ResumeItem({title, date, iconSrc, children, openUrl}: Pr
                 style={{
                     backgroundImage: "linear-gradient(150deg, rgb(84, 82, 110), rgb(10, 10, 21))",
                 }}
-                onClick={openUrl ? (() => window.open(openUrl, "_blank")) : undefined}
+                onClick={
+                    openUrl ? ((e) => {
+                        // check if user clicked on a link
+                        if ((e.target as HTMLElement).tagName.toLowerCase() !== "a") {
+                            window.open(openUrl, "_blank")
+                        }
+                    }) : undefined
+                }
             >
                 <div className="relative block w-full min-h-[200px] rounded-2xl bg-gray-900 p-3 opacity-100">
                     <div className="w-full h-fit items-center justify-center flex">
-                        <img src={iconSrc} className="w-6 h-6 mx-2 rounded-full"/>
+                        {
+                            iconSrc &&
+                            <img src={iconSrc} className="w-6 h-6 mx-2 rounded-full"/>
+                        }
                         {title}
                     </div>
                     {

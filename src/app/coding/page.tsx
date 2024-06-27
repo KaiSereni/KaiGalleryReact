@@ -3,10 +3,13 @@
 import React, { useEffect, useState } from "react"
 import grid from "../../../public/image/grid.png"
 import fai from "../../../public/image/FAILogo.png"
+import pohakoo from "../../../public/image/pohakoo.jpg"
+import rockstar from "../../../public/image/rockstar.jpg"
 import Loading from "@/components/loading_screen";
 import caco from "../../../public/image/CascadesAcademyLogo.png"
 import swell from "../../../public/image/SwellAIlogo.svg"
 import dhs from "../../../public/image/DHSLogo.png"
+import pc from "../../../public/image/PC.jpg"
 import ScrollAnim from "@/components/animated_scroll";
 import ResumeItem from "@/components/resume-item-box";
 
@@ -47,6 +50,34 @@ export default function Coding() {
                             openUrl="https://forgotai.com"
                         >
                             My personal AI playground. This is where I host an array of open-source AI projects, 100% coded by me. I have a fascination with AI, and while researching it, I identified several potential products that didn't yet exist but were in demand. I couldn't just stand by waiting for large companies to develop these things, so I just made them myself and made them open source. I learned how to create a website from concept to launch, how to integrate a backend with advanced code, and how to maintain cost-effectiveness.
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="PohakuRockstar (Old YouTube channel)" 
+                            iconSrc={rockstar.src}
+                            date="April 2016 - Aug 2020"
+                            openUrl="https://youtube.com/DudePerfict"
+                        >
+                            This YouTube channel is where I first started making videos with my friends, and adding simple VFX wherever I could. I loved editing, and used any free software I could get my hands on to make creative videos. I made videos on this channel ranging from <a className="text-blue-400 underline" href="https://youtu.be/4Khc1lve8NA?si=qMuVPD6TIZvv6z_w" target="blank">electrical engineering and coding</a> to <a className="text-blue-400 underline" href="https://youtu.be/HWNwnK0-w1g?si=oX1-7pxl-r9kzghW" target="blank">spy skits</a> I made with my friends in my neighborhood.
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="Pohakoo (New YouTube channel)" 
+                            iconSrc={pohakoo.src}
+                            date="May 2020 - Current"
+                            openUrl="https://youtube.com/Pohakoo"
+                        >
+                            I've always loved making videos. I started my first YouTube channel in April 2016, and made videos with my friends. In May 2020, I started a new channel called Pohakoo, where I make videos about whatever I'm interested in. While making content for this channel, I developed my fascination with VFX and video editing. I watch a hours and hours of content from channels that explain how VFX in movies are made.
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="Building my own computer" 
+                            date="2019 - 2023"
+                            openUrl="https://youtube.com/Pohakoo"
+                        >
+                            <div className="block w-full h-full">
+                                <div className="w-full h-fit flex items-center justify-center">
+                                    <img src={pc.src} className="w-1/3 h-fit m-2"/>
+                                </div>
+                                I've been building this computer for years. An iPad sufficed when I was young, but when my interests moved to advanced video editing and coding, I needed a PC. My parents were unable to buy one for me, but luckily, my dad's office threw out a really old one and he gave it to me. Then, I kind of Thesius's Ship'ed it, slowly replacing each part with an upgraded one, until the only evidence that this was the same computer was the software. Since this was very early on, this gave me a confidence in my ability to teach myself how to so something like this using YouTube tutorials and intuition.
+                            </div>
                         </ResumeItem>
                     </div>
                 </div>
