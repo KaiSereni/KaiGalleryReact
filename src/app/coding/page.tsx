@@ -10,6 +10,7 @@ import caco from "../../../public/image/CascadesAcademyLogo.png"
 import swell from "../../../public/image/SwellAIlogo.svg"
 import dhs from "../../../public/image/DHSLogo.png"
 import pc from "../../../public/image/PC.jpg"
+import wallpc from "../../../public/image/wallpc.jpg"
 import mbw from "../../../public/image/mbw.jpg"
 import cplus from "../../../public/image/cplus.jpeg"
 import ScrollAnim from "@/components/animated_scroll";
@@ -34,8 +35,11 @@ export default function Coding() {
     return (
         <>
             <div className="block">
-                <div className="block h-[700px]">
+                <div className="relative block h-[700px]">
                     <div className="ansolute flex w-full h-full justify-center bg-gray-50">
+                        <div className="absolute bottom-4 left-4">
+                            Click a module below to view more content
+                        </div>
                         <img src={grid.src} className="absolute h-[700px] opacity-10"/>
                         <ScrollAnim totalImages={totalImages} idToImgName={idToImgname} setIsLoading={setIsLoading}/>
                     </div>
@@ -80,6 +84,24 @@ export default function Coding() {
                                 </div>
                                 I've been building this computer for years. An iPad sufficed when I was young, but when my interests moved to advanced video editing and coding, I needed a PC. My parents were unable to buy one for me, but luckily, my dad's office threw out a really old one and he gave it to me. Then, I kind of Thesius's Ship'ed it, slowly replacing each part with an upgraded one, until the only evidence that this was the same computer was the software. Since this was very early on, this gave me a confidence in my ability to teach myself how to so something like this using YouTube tutorials and intuition.
                             </div>
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="Wall PC" 
+                            date="Oct 2023"
+                        >
+                            <div className="block w-full h-full">
+                                <div className="w-full h-fit flex items-center justify-center">
+                                    <img src={wallpc.src} className="w-1/3 h-fit m-2"/>
+                                </div>
+                                A friend gave me an old PC from the 90s in return for fixing his main computer, and I thought it would be fun to take it apart, nail it all to a piece of wood, wire it back together, and nail it to my wall. It still works!
+                            </div>
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="Piano" 
+                            date="2020 - Present"
+                            openUrl="https://youtu.be/yfyOx0AGmMw?t=190"
+                        >
+                            Click to see me play "Radioactive" by Imagine Dragons. Piano starts at 3:10 into the video.
                         </ResumeItem>
                     </div>
                 </div>
@@ -132,6 +154,27 @@ export default function Coding() {
                                 A company responsible for promoting a Minecraft software commissioned me to make an edit for their TikTok in a common Minecraft editing style. They have over 130,000 followers.
                             </div>
                         </ResumeItem>
+                    </div>
+                </div>
+                <div className="block w-full h-auto min-h-64 bg-blue-900 text-white">
+                    <div className="flex w-auto p-8">
+                        <p className="text-7xl font-bold w-full text-left">School Projects</p>
+                    </div>
+                    <div className="flex flex-wrap w-full items-center">
+                        <ResumeItem 
+                            title="Virtual Biology Lab" 
+                            date="Oct 2021"
+                            openUrl="https://scratch.mit.edu/projects/677385887/"
+                        >
+                            I have huge respect for my freshman biology teacher this year, Mr. Yamamoto. I didn't want to dissect a rat because I don't like hurting animals, and he suprised me by asking what I wanted to be when I grew up. I already knew by this time that I wanted to be a programmer, so he said I could code a rat dissection simulation along with a breakdown of the human body. This made me love this class, and I worked for a long time to create something that I was really proud of. He then used it to teach my class. I'm so happy I got to do this project.
+                        </ResumeItem>
+                    </div>
+                </div>
+                <div className="block w-full h-auto min-h-64 bg-gray-800 text-white">
+                    <div className="flex w-auto p-8">
+                        <p className="text-7xl font-bold w-full text-right">Just for Fun</p>
+                    </div>
+                    <div className="flex flex-wrap w-full items-center">
                     </div>
                 </div>
             </div>
