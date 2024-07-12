@@ -13,6 +13,7 @@ import pc from "../../../public/image/PC.jpg"
 import wallpc from "../../../public/image/wallpc.jpg"
 import mbw from "../../../public/image/mbw.jpg"
 import cplus from "../../../public/image/cplus.jpeg"
+import tyk from "../../../public/image/TYK.png"
 import ScrollAnim from "@/components/animated_scroll";
 import ResumeItem from "@/components/resume-item-box";
 
@@ -58,14 +59,6 @@ export default function Coding() {
                             My personal AI playground. This is where I host an array of open-source AI projects, 100% coded by me. I have a fascination with AI, and while researching it, I identified several potential products that didn't yet exist but were in demand. I couldn't just stand by waiting for large companies to develop these things, so I just made them myself and made them open source. I learned how to create a website from concept to launch, how to integrate a backend with advanced code, and how to maintain cost-effectiveness.
                         </ResumeItem>
                         <ResumeItem 
-                            title="PohakuRockstar (Old YouTube channel)" 
-                            iconSrc={rockstar.src}
-                            date="April 2016 - Aug 2020"
-                            openUrl="https://youtube.com/DudePerfict"
-                        >
-                            This YouTube channel is where I first started making videos with my friends, and adding simple VFX wherever I could. I loved editing, and used any free software I could get my hands on to make creative videos. I made videos on this channel ranging from <a className="text-blue-400 underline" href="https://youtu.be/4Khc1lve8NA" target="blank">electrical engineering and coding</a> to <a className="text-blue-400 underline" href="https://youtu.be/HWNwnK0-w1g" target="blank">spy skits</a> I made with my friends in my neighborhood.
-                        </ResumeItem>
-                        <ResumeItem 
                             title="Pohakoo (New YouTube channel)" 
                             iconSrc={pohakoo.src}
                             date="May 2020 - Current"
@@ -84,24 +77,6 @@ export default function Coding() {
                                 </div>
                                 I've been building this computer for years. An iPad sufficed when I was young, but when my interests moved to advanced video editing and coding, I needed a PC. My parents were unable to buy one for me, but luckily, my dad's office threw out a really old one and he gave it to me. Then, I kind of Thesius's Ship'ed it, slowly replacing each part with an upgraded one, until the only evidence that this was the same computer was the software. Since this was very early on, this gave me a confidence in my ability to teach myself how to so something like this using YouTube tutorials and intuition.
                             </div>
-                        </ResumeItem>
-                        <ResumeItem 
-                            title="Wall PC" 
-                            date="Oct 2023"
-                        >
-                            <div className="block w-full h-full">
-                                <div className="w-full h-fit flex items-center justify-center">
-                                    <img src={wallpc.src} className="w-1/3 h-fit m-2"/>
-                                </div>
-                                A friend gave me an old PC from the 90s in return for fixing his main computer, and I thought it would be fun to take it apart, nail it all to a piece of wood, wire it back together, and nail it to my wall. It still works!
-                            </div>
-                        </ResumeItem>
-                        <ResumeItem 
-                            title="Piano" 
-                            date="2020 - Present"
-                            openUrl="https://youtu.be/yfyOx0AGmMw?t=190"
-                        >
-                            Click to see me play "Radioactive" by Imagine Dragons. Piano starts at 3:10 into the video.
                         </ResumeItem>
                     </div>
                 </div>
@@ -175,6 +150,40 @@ export default function Coding() {
                         <p className="text-7xl font-bold w-full text-right">Just for Fun</p>
                     </div>
                     <div className="flex flex-wrap w-full items-center">
+                        <ResumeItem 
+                            title="Piano" 
+                            date="2020 - Present"
+                            openUrl="https://youtu.be/yfyOx0AGmMw?t=190"
+                        >
+                            Click to see me play "Radioactive" by Imagine Dragons. Piano starts at 3:10 into the video. I have never taken a piano lesson in my life, I learned how to do this by watching someone play it on YouTube.
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="PohakuRockstar (Old YouTube channel)" 
+                            iconSrc={rockstar.src}
+                            date="April 2016 - Aug 2020"
+                            openUrl="https://youtube.com/DudePerfict"
+                        >
+                            This YouTube channel is where I first started making videos with my friends, and adding simple VFX wherever I could. I loved editing, and used any free software I could get my hands on to make creative videos. I made videos on this channel ranging from <a className="text-blue-400 underline" href="https://youtu.be/4Khc1lve8NA" target="blank">electrical engineering and coding</a> to <a className="text-blue-400 underline" href="https://youtu.be/HWNwnK0-w1g" target="blank">spy skits</a> I made with my friends in my neighborhood.
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="The Yummy Kitchen (Old YouTube channel)" 
+                            iconSrc={tyk.src}
+                            date="Jan 2019 - Dec 2019"
+                            openUrl="youtube.com/@theyummykitchen6783"
+                        >
+                            This YouTube channel is where I first started making videos with my friends, and adding simple VFX wherever I could. I loved editing, and used any free software I could get my hands on to make creative videos. I made videos on this channel ranging from <a className="text-blue-400 underline" href="https://youtu.be/4Khc1lve8NA" target="blank">electrical engineering and coding</a> to <a className="text-blue-400 underline" href="https://youtu.be/HWNwnK0-w1g" target="blank">spy skits</a> I made with my friends in my neighborhood.
+                        </ResumeItem>
+                        <ResumeItem 
+                            title="Wall PC" 
+                            date="Oct 2023"
+                        >
+                            <div className="block w-full h-full">
+                                <div className="w-full h-fit flex items-center justify-center">
+                                    <img src={wallpc.src} className="w-1/3 h-fit m-2"/>
+                                </div>
+                                A friend gave me an old PC from the 90s in return for fixing his main computer, and I thought it would be fun to take it apart, nail it all to a piece of wood, wire it back together, and nail it to my wall. It still works!
+                            </div>
+                        </ResumeItem>
                     </div>
                 </div>
             </div>
